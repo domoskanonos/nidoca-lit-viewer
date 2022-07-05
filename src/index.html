@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="language" content="de" />
+    <meta name="robots" content="index, follow" />
+    <meta name="title" content="nidoca framework" />
+    <meta name="description" content="nidoca framework" />
+    <meta name="keywords" content="frontend, webcomponents" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <title>webcomponent-viewer</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+      @import url("https://fonts.googleapis.com/css?family=Material+Icons&display=block");
+
+      :root {
+        --height-min: 36px;
+        --height-medium: 54px;
+        --height-max: 72px;
+
+        --space: 8px;
+        --space-2: 16px;
+        --space-3: 24px;
+        --space-4: 32px;
+        --space-6: 48px;
+        --space-8: 64px;
+
+        --border-width-min: 1px;
+        --border-width-medium: 2px;
+        --border-width-max: 4px;
+
+        --app-color-percent-selected: 70%;
+        --app-color-percent-hover: 80%;
+        --app-color-percent-optional: 60%;
+
+        --app-color-background: #1e293b;
+        --app-color-background-background: #ffffff;
+        --app-color-background-border: #9b9997;
+
+        --app-color-surface: #000000;
+        --app-color-surface-background: #eaeaea;
+        --app-color-surface-border: #9b9997;
+
+        --app-color-primary: #e6e6e6;
+        --app-color-primary-background: #0f172a;
+        --app-color-primary-border: #a6a6a6;
+
+        --app-color-secondary: #ffffff;
+        --app-color-secondary-background: #b20505;
+        --app-color-secondary-border: #808080;
+
+        --font-size: 18px;
+        --font-line-height: 1.2em;
+
+        --icon-size: 28px;
+        --icon-size-big: 36px;
+      }
+
+      *,
+      ::slotted(*) {
+        word-wrap: break-word;
+        box-sizing: border-box;
+        text-rendering: optimizelegibility;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: var(--font-size);
+        letter-spacing: normal;
+        line-height: 0;
+        font-style: normal;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <webcomponent-viewer-playground></webcomponent-viewer-playground>
+  </body>
+</html>

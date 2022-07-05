@@ -1,0 +1,70 @@
+{
+  "name": "@domoskanonos/nidoca-webcomponents",
+  "version": "1.0.58",
+  "license": "MIT",
+  "keywords": [
+    "webcomponent, html, typescript, shadow dom, slot, ui, frontend, lit element"
+  ],
+  "description": "nidoca framework (nidoca-core)",
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "module": "./src/index.js",
+  "devDependencies": {
+    "@domoskanonos/nidoca-router": "1.0.2",
+    "@domoskanonos/nidoca-oauth-client": "1.0.3",
+    "@domoskanonos/nidoca-form-helper": "1.0.10",
+    "@domoskanonos/nidoca-date-helper": "1.0.4",
+    "@domoskanonos/nidoca-http": "1.0.13",
+    "@domoskanonos/crudyboy-client": "1.0.4",
+    "@domoskanonos/nidoca-postgrest-client": "1.0.1",
+    "mustache": "4.2.0",
+    "@types/mustache": "4.1.2",
+    "npm-check-updates": "12.1.0",
+    "@typescript-eslint/eslint-plugin": "5.9.1",
+    "@typescript-eslint/parser": "5.9.1",
+    "eslint": "8.7.0",
+    "eslint-plugin-tsdoc": "0.2.14",
+    "lit-analyzer": "1.2.1",
+    "web-component-analyzer": "1.1.6",
+    "prettier": "2.5.1",
+    "ts-loader": "9.2.6",
+    "typedoc": "0.22.10",
+    "copy-webpack-plugin": "10.2.0",
+    "html-webpack-plugin": "5.5.0",
+    "webpack": "5.73.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.2"
+  },
+  "dependencies": {
+    "typescript": "4.5",
+    "lit": "2.1.1",
+    "chart.js": "3.7.0"
+  },
+  "author": "Dominik Bruhn",
+  "scripts": {
+    "start": "webpack serve --config webpack.dev.js",
+    "pretty": "prettier --write \"./**/*.{ts,json}\"",
+    "check-update": "ncu",
+    "upgrade": "ncu -u",
+    "ts": "tsc",
+    "ts:watch": "tsc --watch",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix",
+    "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
+    "typedocs": "typedoc --out public/typedocs src/index.ts",
+    "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/documentation/webcomponents",
+    "docs": "npm run typedocs && npm run docs-webcomponents",
+    "prebuild": "npm install && npm run ts && npm run eslint && npm run lit-analyzer && npm run docs",
+    "build:webcomponents": "webpack --config ./webpack.webcomponent.js ",
+    "build:app": "webpack --config ./webpack.app.js ",
+    "build:webcomponent-viewer": "webpack --config ./webpack.webcomponent-viewer.js ",
+    "build:all": "npm run build:webcomponents && npm run build:app && npm run build:webcomponent-viewer",
+    "preversion": "npm run prebuild",
+    "new-patch": "npm version patch -m \"new patch version: %s\" --force",
+    "new-minor": "npm version minor -m \"new minor version: %s\" --force",
+    "new-major": "npm version major -m \"new major version: %s\" --force",
+    "postversion": "npm publish --access=public"
+  }
+}
