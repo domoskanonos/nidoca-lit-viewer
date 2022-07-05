@@ -1,9 +1,8 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
+import path from "path";
 
-const path = require("path");
-
-module.exports = {
+export default {
   entry: "./src/index.ts",
   module: {
     rules: [
@@ -24,8 +23,8 @@ module.exports = {
   },
   mode: "production",
   output: {
-    path: path.resolve().concat("/public/webcomponents"),
-    filename: "nidoca-webcomponents.js",
+    path: path.resolve().concat("/public"),
+    filename: "nidoca-base.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,10 +32,7 @@ module.exports = {
       template: "./src/index.html",
     }),
     new CopyPlugin({
-      patterns: [
-        {from: "src/nidoca.css", to: "nidoca.css"},
-        {from: "src/logo.svg", to: "logo.svg"},
-      ],
+      patterns: [{from: "src/main.css", to: "main.css"}],
     }),
   ],
 };

@@ -4,4 +4,4 @@ node_modules
 lib
 .vscode
 public
-custom-elements.json
+coverage

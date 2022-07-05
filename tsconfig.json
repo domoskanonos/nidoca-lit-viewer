@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "declaration": true,
+    "sourceMap": true,
+    "module": "es2015",
+    "outDir": "./public/lib/",
+    "downlevelIteration": true,
+    "strict": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "importsNotUsedAsValues": "preserve",
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true,
+        "rules": {
+          "no-unknown-tag-name": "off",
+          "no-missing-import": "off",
+          "no-unknown-event": "error",
+          "no-unknown-attribute": "error",
+          "no-unknown-property": "error",
+          "no-unknown-slot": "error",
+          "no-legacy-attribute": "error"
+        }
+      }
+    ]
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "public/webcomponents/typedocs"
+  },
+  "exclude": ["node_modules", "public", "nginx", "coverage"]
+}
