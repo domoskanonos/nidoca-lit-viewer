@@ -5,3 +5,4 @@ lib
 .vscode
 public
 custom-elements.json
+coverage
