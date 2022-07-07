@@ -15,9 +15,5 @@ jobs:
       - run: npm run build
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: gh-pages
           folder: public
-          repository-name: domoskanonos/nidoca-documentation
-          target-folder: /nidoca-lit-viewer/
-          ssh-key: ${{ secrets.DEPLOY_DOCUMENTATION_TOKEN }}
