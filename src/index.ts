@@ -62,14 +62,14 @@ export class Nidoca {
         theme="${NidocaTheme.SURFACE}"
       ></nidoca-form-newsletter>`
     );
-
+/**
     this._registeredElementsMap.set(
       "nidoca-form-login",
       html` <nidoca-form-login
         @nidoca-form-login-submit="${(event: CustomEvent) => alert(JSON.stringify(event.detail))}"
       ></nidoca-form-login>`
     );
-
+ */
     this.registeredElementsMap.set(
       "nidoca-article",
       html` <nidoca-article
@@ -399,3 +399,5 @@ export class NidocaTheme {
     return undefined;
   }
 }
+
+Nidoca.getUniqueInstance().initDefaultComponents();

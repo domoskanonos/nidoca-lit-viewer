@@ -24,7 +24,7 @@ export default {
   mode: "production",
   output: {
     path: path.resolve().concat("/public"),
-    filename: "nidoca-base.js",
+    filename: "nidoca-lit-viewer.js",
   },
   plugins: [
     new HtmlWebpackPlugin({

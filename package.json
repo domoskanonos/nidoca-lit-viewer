@@ -6,17 +6,13 @@
     "nidoca lit webcomponent viewer to check and test lit webcomponents"
   ],
   "description": "nidoca framework (nidoca-lit-viewer)",
-  "files": [
-    "lib/**/*"
-  ],
   "type": "module",
-  "main": "lib/index.ts",
-  "module": "./src/index.ts",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.0.8",
+    "@domoskanonos/nidoca-base": "1.0.8"
+  },
+  "dependencies": {
     "@domoskanonos/nidoca-webcomponents": "1.0.58"
   },
-  "dependencies": {},
   "author": "Dominik Bruhn",
   "scripts": {
     "check-updates": "ncu",
