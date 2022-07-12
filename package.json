@@ -27,7 +27,7 @@
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch --passWithNoTests",
     "typedoc": "typedoc",
     "lit-analyzer": "lit-analyzer \"src/**/*.{js,ts}\"",
-    "cc": "custom-elements-manifest analyze",
+    "cc": "custom-elements-manifest analyze --outdir public/",
     "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/webcomponents/wc-docs",
     "docs:watch": "typedoc --watch",
     "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
