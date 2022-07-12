@@ -1,9 +1,9 @@
-import {customElement, html, LitElement, PropertyValues, TemplateResult} from "lit-element";
+import {html, LitElement, PropertyValues, TemplateResult} from "lit";
+import {property, customElement} from "lit/decorators.js";
 import {WebcomponentWrapper as WebcomponentWrapper} from "./core/webcomponent-wrapper";
 import {WebcomponentGuiWrapper as WebcomponentGuiWrapper} from "./core/webcomponent-gui-wrapper";
 import {css} from "lit-element";
 import {PropertyGuiWrapper} from "./core/property-gui-wrapper";
-import {property} from "lit/decorators.js";
 
 @customElement("webcomponent-viewer")
 export class WebcomponentViewer extends LitElement {

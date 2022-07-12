@@ -8,10 +8,10 @@
   "description": "nidoca framework (nidoca-lit-viewer)",
   "type": "module",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.0.8"
+    "@domoskanonos/nidoca-base": "1.0.9"
   },
   "dependencies": {
-    "@domoskanonos/nidoca-webcomponents": "latest"
+    "@domoskanonos/nidoca-webcomponents": "1.0.75"
   },
   "author": "Dominik Bruhn",
   "scripts": {
@@ -19,8 +19,8 @@
     "upgrade": "ncu -u",
     "start": "webpack serve --config webpack.local.js",
     "ts": "tsc -p ./",
-    "prettier-check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
-    "prettier-fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
+    "prettier:check": "npx prettier --check \"./**/*.{ts,json,js,html}\"",
+    "prettier:fix": "npx prettier --write \"./**/*.{ts,json,js,html}\"",
     "eslint": "eslint src",
     "eslint:fix": "eslint src --fix",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage --passWithNoTests",
@@ -31,7 +31,7 @@
     "docs-webcomponents": "wca analyze \"src/**/*.{js,ts}\" --outDir public/webcomponents/wc-docs",
     "docs:watch": "typedoc --watch",
     "docs": "npm run lit-analyzer && npm run cc && npm run docs-webcomponents && npm run typedoc",
-    "build-frontend": "webpack --config ./webpack.js",
-    "build": "npm i && npm run ts && npm run prettier-check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build-frontend"
+    "build": "webpack --config ./webpack.js",
+    "build:all": "npm i && npm run ts && npm run prettier:check && npm run eslint &&  npm run lit-analyzer && npm run test && npm run docs && npm run build"
   }
 }

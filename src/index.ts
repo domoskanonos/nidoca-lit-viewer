@@ -3,11 +3,13 @@ export * from "./webcomponent-viewer-container";
 export * from "./webcomponent-viewer-playground";
 
 import {html, HTMLTemplateResult, TemplateResult} from "lit";
-import {NidocaButtonType} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-button";
-import {NidocaIcon} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-icon";
-import {NidocaImg} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-img";
-import {NidocaMovie} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-movie";
-import {NidocaProgress} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-progress";
+import {
+  NidocaButtonType,
+  NidocaIcon,
+  NidocaImg,
+  NidocaMovie,
+  NidocaProgress,
+} from "@domoskanonos/nidoca-webcomponents/lib";
 
 export class Nidoca {
   initDefaultComponents() {
@@ -66,14 +68,7 @@ export class Nidoca {
         theme="${NidocaTheme.SURFACE}"
       ></nidoca-form-newsletter>`
     );
-    /**
-    this._registeredElementsMap.set(
-      "nidoca-form-login",
-      html` <nidoca-form-login
-        @nidoca-form-login-submit="${(event: CustomEvent) => alert(JSON.stringify(event.detail))}"
-      ></nidoca-form-login>`
-    );
- */
+
     this.registeredElementsMap.set(
       "nidoca-article",
       html` <nidoca-article

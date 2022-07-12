@@ -1,9 +1,7 @@
-import {customElement, html, LitElement, TemplateResult} from "lit-element";
-import {css} from "lit-element";
-import {property} from "lit/decorators.js";
+import {css, html, LitElement, TemplateResult} from "lit";
+import {property, customElement} from "lit/decorators.js";
 import {NidocaFormCombobox} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-combobox";
 import {FormOutputData} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-abstract-input-element";
-
 
 import {ifDefined} from "lit/directives/if-defined.js";
 

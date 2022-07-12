@@ -10,7 +10,8 @@ export default {
     port: 8080,
   },
   resolve: {
-    extensions: [".ts", ".js", "css"],
+    fullySpecified: false,
+    extensions: [".js", ".ts", ".js", "css"],
   },
   performance: {
     maxEntrypointSize: 700000,
