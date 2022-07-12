@@ -1,0 +1,1662 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "webpack.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "webpack.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "webpack.local.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "webpack.local.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Nidoca",
+          "members": [
+            {
+              "kind": "method",
+              "name": "initDefaultComponents"
+            },
+            {
+              "kind": "field",
+              "name": "uniqueInstance",
+              "type": {
+                "text": "Nidoca"
+              },
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "getUniqueInstance",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "_registeredElementsMap",
+              "type": {
+                "text": "Map<string, TemplateResult>"
+              },
+              "privacy": "private",
+              "default": "new Map<string, TemplateResult>()"
+            },
+            {
+              "kind": "field",
+              "name": "registeredElementsMap",
+              "type": {
+                "text": "Map<string, TemplateResult>"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "registeredElementNames",
+              "type": {
+                "text": "string[]"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "registerElementName",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "elementName",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaTheme",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getStyle",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "HTMLTemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "theme",
+                  "type": {
+                    "text": "NidocaTheme | string | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "PRIMARY",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "\"primary\""
+            },
+            {
+              "kind": "field",
+              "name": "SECONDARY",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "\"secondary\""
+            },
+            {
+              "kind": "field",
+              "name": "SURFACE",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "\"surface\""
+            },
+            {
+              "kind": "field",
+              "name": "BACKGROUND",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "\"background\""
+            },
+            {
+              "kind": "field",
+              "name": "TRANSPARENT",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "\"transparent\""
+            },
+            {
+              "kind": "method",
+              "name": "getOposite",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "theme",
+                  "type": {
+                    "text": "string | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getParentTheme",
+              "return": {
+                "type": {
+                  "text": "string | undefined"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer-container\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer-playground\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Nidoca",
+          "declaration": {
+            "name": "Nidoca",
+            "module": "src/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NidocaTheme",
+          "declaration": {
+            "name": "NidocaTheme",
+            "module": "src/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/webcomponent-viewer-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentViewerContainer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css`\n    slot {\n      display: none;\n    }\n  `"
+            },
+            {
+              "kind": "field",
+              "name": "elementName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "componentMap",
+              "type": {
+                "text": "Map<string, HTMLElement>"
+              },
+              "privacy": "private",
+              "default": "new Map<string, HTMLElement>()"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "FormOutputData[]"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "slotChanged",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewerContainer",
+          "declaration": {
+            "name": "WebcomponentViewerContainer",
+            "module": "src/webcomponent-viewer-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/webcomponent-viewer-playground.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentViewerPlayground",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css``"
+            },
+            {
+              "kind": "field",
+              "name": "elementName",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"nidoca-tabs\""
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewerPlayground",
+          "declaration": {
+            "name": "WebcomponentViewerPlayground",
+            "module": "src/webcomponent-viewer-playground.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/webcomponent-viewer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentViewer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css`\n    .container {\n      display: grid;\n      grid-template-columns: 1fr;\n    }\n\n    .paddingTopBottom {\n      padding-top: var(--space-2);\n      padding-bottom: var(--space-2);\n    }\n  `"
+            },
+            {
+              "kind": "field",
+              "name": "webcomponentGuiWrapper",
+              "type": {
+                "text": "WebcomponentGuiWrapper | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "customEventNames",
+              "type": {
+                "text": "string[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "element",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "_changedProperties",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "slotChanged",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toAttributeRows",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "type": {
+                    "text": "PropertyGuiWrapper[] | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toSlotRows",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "type": {
+                    "text": "string[] | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toCustomEventRows",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "type": {
+                    "text": "string[] | undefined"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewer",
+          "declaration": {
+            "name": "WebcomponentViewer",
+            "module": "src/webcomponent-viewer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "coverage/lcov-report/block-navigation.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "coverage/lcov-report/prettify.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "coverage/lcov-report/sorter.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/index.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Nidoca",
+          "members": [
+            {
+              "kind": "method",
+              "name": "initDefaultComponents"
+            },
+            {
+              "kind": "method",
+              "name": "getUniqueInstance",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "registeredElementsMap"
+            },
+            {
+              "kind": "field",
+              "name": "registeredElementNames"
+            },
+            {
+              "kind": "method",
+              "name": "registerElementName",
+              "parameters": [
+                {
+                  "name": "elementName"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_registeredElementsMap",
+              "default": "new Map()"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaTheme",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getStyle",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "theme"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getOposite",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "theme"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getParentTheme",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer-container\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./webcomponent-viewer-playground\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Nidoca",
+          "declaration": {
+            "name": "Nidoca",
+            "module": "public/lib/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NidocaTheme",
+          "declaration": {
+            "name": "NidocaTheme",
+            "module": "public/lib/index.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/webcomponent-viewer-container.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "WebcomponentViewerContainer",
+          "default": "class WebcomponentViewerContainer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.componentMap = new Map();\n        this.options = [];\n    }\n    render() {\n        return html `\n      <nidoca-form-combobox\n        name=\"components\"\n        label=\"Komponenten\"\n        value=\"${ifDefined(this.elementName)}\"\n        .options=\"${this.options}\"\n        @input=\"${(event) => {\n            this.elementName = event.target.getOutputData().value;\n        }}\"\n      ></nidoca-form-combobox>\n\n      <nidoca-hr></nidoca-hr>\n\n      <webcomponent-viewer> ${this.componentMap.get(this.elementName ? this.elementName : \"\")} </webcomponent-viewer>\n      <slot @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>\n    `;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        const elements = slotElement.assignedElements();\n        const elementSize = elements.length;\n        for (let index = 0; index < elementSize; index++) {\n            const element = elements[index];\n            if (element instanceof HTMLElement) {\n                if (this.elementName == undefined) {\n                    this.elementName = element.tagName;\n                }\n                this.componentMap.set(element.tagName, element.cloneNode(true));\n            }\n        }\n        this.options = NidocaFormCombobox.stringArrayToOptions(Array.from(this.componentMap.keys()));\n        this.requestUpdate();\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewerContainer",
+          "declaration": {
+            "name": "WebcomponentViewerContainer",
+            "module": "public/lib/webcomponent-viewer-container.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/webcomponent-viewer-playground.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "WebcomponentViewerPlayground",
+          "default": "class WebcomponentViewerPlayground extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.elementName = \"nidoca-tabs\";\n    }\n    render() {\n        return html `\n      <nidoca-container theme=\"primary\">\n        <nidoca-section>\n          <nidoca-article\n            title=\"Komponentenübersicht\"\n            text=\"Auf dieser Seite kannst du dir die einzelnen Komponenten anschauen. Mithilfe des Konfigurators, kannst du die Komponenten und deren Attribute verwalten und die Verwendung testen. Anschließend kannst du dir den Quellcode für deine entsprechende Umgebung kopieren und die Komponente verwenden.\"\n          ></nidoca-article>\n        </nidoca-section>\n\n        <nidoca-section>\n          <webcomponent-viewer-container>\n            ${Nidoca.getUniqueInstance().registeredElementNames.map((elementName) => html ` ${Nidoca.getUniqueInstance().registeredElementsMap.get(elementName)} `)}\n          </webcomponent-viewer-container>\n        </nidoca-section>\n      </nidoca-container>\n    `;\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewerPlayground",
+          "declaration": {
+            "name": "WebcomponentViewerPlayground",
+            "module": "public/lib/webcomponent-viewer-playground.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/webcomponent-viewer.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "WebcomponentViewer",
+          "default": "class WebcomponentViewer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.webcomponentGuiWrapper = null;\n        this.customEventNames = [];\n    }\n    updated(_changedProperties) {\n        if (_changedProperties.has(\"element\") && this.element != undefined) {\n            this.element.style.flexBasis = \"auto\";\n            this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(this.element));\n            this.requestUpdate();\n        }\n    }\n    render() {\n        var _a, _b, _c, _d, _e, _f, _g, _h;\n        return html ` <nidoca-section theme=\"primary\">\n        <div>\n          <nidoca-text-h2 class=\"paddingTopBottom\">Tag</nidoca-text-h2>\n          <nidoca-code\n            >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : \"\"}\n          </nidoca-code>\n\n          <div style=\"padding-top:var(--space-3);\">\n            <nidoca-section> ${this.element}</nidoca-section>\n          </div>\n        </div>\n\n        <div style=\"padding-left:var(--space-3)\">\n          ${((_a = this.webcomponentGuiWrapper) === null || _a === void 0 ? void 0 : _a.hasProperties())\n            ? html `\n                <nidoca-text-h2 class=\"paddingTopBottom\">Attribute</nidoca-text-h2>\n                ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {\n                return html `${prop.getInputElement(this.webcomponentGuiWrapper)}\n                    <div class=\"paddingTopBottom\"></div>`;\n            })}\n              `\n            : html ``}\n          ${((_b = this.webcomponentGuiWrapper) === null || _b === void 0 ? void 0 : _b.classWrapper.hasSlots())\n            ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Slots</nidoca-text-h2>\n\n                <nidoca-table\n                  theme=\"surface\"\n                  .headers=\"${[\"name\"]}\"\n                  .rows=\"${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}\"\n                >\n                </nidoca-table>`\n            : html ``}\n          ${this.customEventNames.length > 0\n            ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Custom Events</nidoca-text-h2>\n                <nidoca-table\n                  class=\"paddingTopBottom\"\n                  .headers=\"${[\"name\"]}\"\n                  .rows=\"${this.toCustomEventRows(this.customEventNames)}\"\n                >\n                </nidoca-table>`\n            : html ``}\n        </div>\n      </nidoca-section>\n\n      <nidoca-hr></nidoca-hr>\n\n      <nidoca-text-h2 class=\"paddingTopBottom\">Quelltext</nidoca-text-h2>\n      <nidoca-tabs tabIndex=\"0\">\n        <nidoca-tab slot=\"tab\">Angular</nidoca-tab>\n        <nidoca-tab slot=\"tab\">Javascript</nidoca-tab>\n        <nidoca-tab slot=\"tab\">Typescript</nidoca-tab>\n        <nidoca-tab slot=\"tab\">Lit</nidoca-tab>\n        <nidoca-tab slot=\"tab\">Html</nidoca-tab>\n\n        <nidoca-tab-content slot=\"tabContent\">\n          <nidoca-code class=\"paddingTopBottom\">${(_c = this.webcomponentGuiWrapper) === null || _c === void 0 ? void 0 : _c.getAsAngular()}</nidoca-code>\n        </nidoca-tab-content>\n\n        <nidoca-tab-content slot=\"tabContent\">\n          <nidoca-code class=\"paddingTopBottom\">${(_d = this.webcomponentGuiWrapper) === null || _d === void 0 ? void 0 : _d.getAsJavascript()} </nidoca-code>\n        </nidoca-tab-content>\n\n        <nidoca-tab-content slot=\"tabContent\">\n          <nidoca-code class=\"paddingTopBottom\">${(_e = this.webcomponentGuiWrapper) === null || _e === void 0 ? void 0 : _e.getTypescript()}</nidoca-code>\n        </nidoca-tab-content>\n\n        <nidoca-tab-content slot=\"tabContent\">\n          <nidoca-code class=\"paddingTopBottom\">${(_f = this.webcomponentGuiWrapper) === null || _f === void 0 ? void 0 : _f.getAsLit()}</nidoca-code>\n        </nidoca-tab-content>\n\n        <nidoca-tab-content slot=\"tabContent\">\n          <nidoca-code class=\"paddingTopBottom\">${(_g = this.webcomponentGuiWrapper) === null || _g === void 0 ? void 0 : _g.getAsHtml()}</nidoca-code>\n        </nidoca-tab-content>\n      </nidoca-tabs>\n\n      <nidoca-hr></nidoca-hr>\n\n      <nidoca-text-h2 class=\"paddingTopBottom\">Attribute Übersicht</nidoca-text-h2>\n      <nidoca-table\n        class=\"paddingTopBottom\"\n        theme=\"surface\"\n        .headers=\"${[\"name\", \"type\", \"converter type\", \"render type\"]}\"\n        .rows=\"${this.toAttributeRows((_h = this.webcomponentGuiWrapper) === null || _h === void 0 ? void 0 : _h.getPropertyGuiWrappers())}\"\n      >\n      </nidoca-table>\n      <slot @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>`;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        const element = elements[0];\n        if (element instanceof HTMLElement) {\n            this.element = element;\n        }\n    }\n    toAttributeRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((prop) => {\n                const arr = [];\n                arr.push(prop.propertyWrapper.propertyName);\n                arr.push(prop.propertyWrapper.getTypeName());\n                arr.push(prop.propertyWrapper.getConverterTypeName());\n                arr.push(prop.propertyWrapper.getRenderType());\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toSlotRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toCustomEventRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentViewer",
+          "declaration": {
+            "name": "WebcomponentViewer",
+            "module": "public/lib/webcomponent-viewer.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/core/property-gui-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PropertyGuiWrapper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "propertyWrapper",
+              "type": {
+                "text": "PropertyWrapper"
+              },
+              "privacy": "public",
+              "default": "propertyWrapper"
+            },
+            {
+              "kind": "method",
+              "name": "getInputElement",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsHtml",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsLit",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsAngular",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsJavascript",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsTypescript",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "classGuiWrapper",
+                  "type": {
+                    "text": "WebcomponentGuiWrapper"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PropertyGuiWrapper",
+          "declaration": {
+            "name": "PropertyGuiWrapper",
+            "module": "src/core/property-gui-wrapper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/core/property-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PropertyWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getClassName",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "propertyName",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "public",
+              "default": "propertyName"
+            },
+            {
+              "kind": "field",
+              "name": "propertyValue",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "public",
+              "default": "propertyValue"
+            },
+            {
+              "kind": "method",
+              "name": "getRenderType",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "RenderType"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getEnumValues",
+              "return": {
+                "type": {
+                  "text": "any[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getEnumValue",
+              "return": {
+                "type": {
+                  "text": "any"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getEnumKey",
+              "return": {
+                "type": {
+                  "text": "any"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isConverterTypeArray",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isArray",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isPrimitive",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getType",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "any | undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getTypeName",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getConverterType",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "any | undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getConverterTypeName",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "any | undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getTypeOf",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "any | undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toString",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PropertyWrapper",
+          "declaration": {
+            "name": "PropertyWrapper",
+            "module": "src/core/property-wrapper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/core/webcomponent-gui-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentGuiWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getAsHtml",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getAsJavascript",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getTypescript",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getAsLit",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getAsAngular",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "removeOwnTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "innerHTML",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderPropertyGui",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "TemplateResult[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getPropertyGuiWrappers",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "PropertyGuiWrapper[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getPropertieNames",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hasProperties",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentGuiWrapper",
+          "declaration": {
+            "name": "WebcomponentGuiWrapper",
+            "module": "src/core/webcomponent-gui-wrapper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/core/webcomponent-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentWrapper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "instance",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "public",
+              "default": "element"
+            },
+            {
+              "kind": "method",
+              "name": "getClassName",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "getTagName",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getHTMLTag",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getClazz",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "unknown"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSlotNames",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSlots",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "HTMLSlotElement[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hasSlots",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getElementsByTagName",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLSlotElement[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "tagName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "any | undefined | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getPropertieNames",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "string[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getProperties",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "PropertyWrapper[]"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentWrapper",
+          "declaration": {
+            "name": "WebcomponentWrapper",
+            "module": "src/core/webcomponent-wrapper.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/core/property-gui-wrapper.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PropertyGuiWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getInputElement",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsHtml",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsLit",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsAngular",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsJavascript",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAsTypescript",
+              "parameters": [
+                {
+                  "name": "classGuiWrapper"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "propertyWrapper",
+              "default": "propertyWrapper"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PropertyGuiWrapper",
+          "declaration": {
+            "name": "PropertyGuiWrapper",
+            "module": "public/lib/core/property-gui-wrapper.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/core/property-wrapper.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "RenderType"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PropertyWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getClassName"
+            },
+            {
+              "kind": "method",
+              "name": "getRenderType"
+            },
+            {
+              "kind": "method",
+              "name": "getEnumValues"
+            },
+            {
+              "kind": "method",
+              "name": "getEnumValue",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getEnumKey",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isConverterTypeArray"
+            },
+            {
+              "kind": "method",
+              "name": "isArray"
+            },
+            {
+              "kind": "method",
+              "name": "isPrimitive"
+            },
+            {
+              "kind": "method",
+              "name": "getType"
+            },
+            {
+              "kind": "method",
+              "name": "getTypeName"
+            },
+            {
+              "kind": "method",
+              "name": "getConverterType"
+            },
+            {
+              "kind": "method",
+              "name": "getConverterTypeName"
+            },
+            {
+              "kind": "method",
+              "name": "getTypeOf"
+            },
+            {
+              "kind": "method",
+              "name": "toString"
+            },
+            {
+              "kind": "field",
+              "name": "propertyName",
+              "default": "propertyName"
+            },
+            {
+              "kind": "field",
+              "name": "propertyValue",
+              "default": "propertyValue"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RenderType",
+          "declaration": {
+            "name": "RenderType",
+            "module": "public/lib/core/property-wrapper.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PropertyWrapper",
+          "declaration": {
+            "name": "PropertyWrapper",
+            "module": "public/lib/core/property-wrapper.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/core/webcomponent-gui-wrapper.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentGuiWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getAsHtml"
+            },
+            {
+              "kind": "method",
+              "name": "getAsJavascript"
+            },
+            {
+              "kind": "method",
+              "name": "getTypescript"
+            },
+            {
+              "kind": "method",
+              "name": "getAsLit"
+            },
+            {
+              "kind": "method",
+              "name": "getAsAngular"
+            },
+            {
+              "kind": "method",
+              "name": "removeOwnTag",
+              "parameters": [
+                {
+                  "name": "innerHTML"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderPropertyGui"
+            },
+            {
+              "kind": "method",
+              "name": "getPropertyGuiWrappers"
+            },
+            {
+              "kind": "method",
+              "name": "getPropertieNames"
+            },
+            {
+              "kind": "method",
+              "name": "hasProperties"
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "default": "parent"
+            },
+            {
+              "kind": "field",
+              "name": "classWrapper",
+              "default": "classWrapper"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentGuiWrapper",
+          "declaration": {
+            "name": "WebcomponentGuiWrapper",
+            "module": "public/lib/core/webcomponent-gui-wrapper.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/core/webcomponent-wrapper.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebcomponentWrapper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getClassName"
+            },
+            {
+              "kind": "method",
+              "name": "getTagName"
+            },
+            {
+              "kind": "method",
+              "name": "getHTMLTag"
+            },
+            {
+              "kind": "method",
+              "name": "getClazz"
+            },
+            {
+              "kind": "method",
+              "name": "getSlotNames"
+            },
+            {
+              "kind": "method",
+              "name": "getSlots"
+            },
+            {
+              "kind": "method",
+              "name": "hasSlots"
+            },
+            {
+              "kind": "method",
+              "name": "getElementsByTagName",
+              "parameters": [
+                {
+                  "name": "tagName"
+                },
+                {
+                  "name": "element"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getPropertieNames"
+            },
+            {
+              "kind": "method",
+              "name": "getProperties"
+            },
+            {
+              "kind": "field",
+              "name": "instance",
+              "default": "element"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebcomponentWrapper",
+          "declaration": {
+            "name": "WebcomponentWrapper",
+            "module": "public/lib/core/webcomponent-wrapper.js"
+          }
+        }
+      ]
+    }
+  ]
+}
