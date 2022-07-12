@@ -1,7 +1,8 @@
 import {PropertyWrapper, RenderType} from "./property-wrapper";
 import {html, LitElement, TemplateResult} from "lit";
 import {WebcomponentGuiWrapper} from "./webcomponent-gui-wrapper";
-import {NidocaFormCombobox, NidocaFormTextType} from "@domoskanonos/nidoca-webcomponents";
+import {NidocaFormTextType} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-text";
+import {NidocaFormCombobox} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-combobox";
 import {WebcomponentWrapper} from "./webcomponent-wrapper";
 
 export class PropertyGuiWrapper {
