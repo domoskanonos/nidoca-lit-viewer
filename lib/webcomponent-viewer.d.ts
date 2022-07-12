@@ -1,7 +1,7 @@
-import { LitElement, PropertyValues, TemplateResult } from "lit-element";
+import { LitElement, PropertyValues, TemplateResult } from "lit";
 import { PropertyGuiWrapper } from "./core/property-gui-wrapper";
 export declare class WebcomponentViewer extends LitElement {
-    static styles: import("lit-element").CSSResult;
+    static styles: import("lit").CSSResult;
     private webcomponentGuiWrapper;
     customEventNames: string[];
     element: HTMLElement | undefined;

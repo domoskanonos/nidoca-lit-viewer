@@ -1,4 +1,4 @@
-import { TemplateResult } from "lit-element";
+import { TemplateResult } from "lit";
 import { WebcomponentWrapper } from "./webcomponent-wrapper";
 import { PropertyGuiWrapper } from "./property-gui-wrapper";
 import { WebcomponentViewer } from "..";

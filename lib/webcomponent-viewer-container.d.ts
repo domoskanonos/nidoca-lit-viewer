@@ -1,6 +1,6 @@
-import { LitElement, TemplateResult } from "lit-element";
+import { LitElement, TemplateResult } from "lit";
 export declare class WebcomponentViewerContainer extends LitElement {
-    static styles: import("lit-element").CSSResult;
+    static styles: import("lit").CSSResult;
     elementName: string | undefined;
     private componentMap;
     private options;
