@@ -1,10 +1,10 @@
 export declare enum RenderType {
-    STRING = "String",
-    NUMBER = "Number",
-    BOOLEAN = "Boolean",
-    COMBOBOX = "Class",
-    ARRAY = "Array",
-    UNDEFINED = "undefined"
+    String = "String",
+    Number = "Number",
+    Boolean = "Boolean",
+    Class = "Class",
+    Array = "Array",
+    undefined = "undefined"
 }
 export declare class PropertyWrapper {
     getClassName(): string;

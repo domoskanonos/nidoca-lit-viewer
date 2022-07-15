@@ -11,7 +11,6 @@ export declare class WebcomponentGuiWrapper {
     getTypescript(): string;
     getAsLit(): string;
     getAsAngular(): string;
-    private removeOwnTag;
     renderPropertyGui(): TemplateResult[];
     getPropertyGuiWrappers(): PropertyGuiWrapper[];
     getPropertieNames(): string[];

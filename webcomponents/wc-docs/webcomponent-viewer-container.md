@@ -2,9 +2,9 @@
 
 ## Properties
 
-| Property      | Attribute     | Type                  |
-|---------------|---------------|-----------------------|
-| `elementName` | `elementName` | `string \| undefined` |
+| Property             | Type                              |
+|----------------------|-----------------------------------|
+| `webcomponentViewer` | `WebcomponentViewer \| undefined` |
 
 ## Methods
 
