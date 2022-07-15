@@ -7,20 +7,18 @@ export class WebcomponentGuiWrapper {
   constructor(public parent: WebcomponentViewer, public classWrapper: WebcomponentWrapper) {}
 
   public getAsHtml(): string {
-    const htmlString: string = `
-<${this.classWrapper.getTagName()}
+    const htmlString: string = `<${this.classWrapper.getTagName()}
 ${this.getPropertyGuiWrappers()
   .map((propertyGuiWrapper) => {
     return propertyGuiWrapper.getAsHtml(this);
   })
   .join("")}></${this.classWrapper.getTagName()}>
 `;
-    return htmlString;
+    return htmlString.trim();
   }
 
   public getAsJavascript(): string {
-    const htmlString: string = `
-<${this.classWrapper.getTagName()} id="meinElement"></${this.classWrapper.getTagName()}>
+    const htmlString: string = `<${this.classWrapper.getTagName()} id="meinElement"></${this.classWrapper.getTagName()}>
 <script>
   const element = document.getElementById("meinElement");
   ${this.getPropertyGuiWrappers()
@@ -29,7 +27,7 @@ ${this.getPropertyGuiWrappers()
     })
     .join("  ")}</script>
 `;
-    return htmlString;
+    return htmlString.trim();
   }
 
   public getTypescript(): string {
@@ -41,7 +39,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     })
     .join("  ")}
 `;
-    return htmlString;
+    return htmlString.trim();
   }
 
   //${this.removeOwnTag(this.showcaseElement.innerHTML)}
@@ -54,7 +52,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     })
     .join("  ")}>
 `;
-    return htmlString;
+    return htmlString.trim();
   }
 
   public getAsAngular(): string {
@@ -65,14 +63,7 @@ ${this.getPropertyGuiWrappers()
   })
   .join("  ")}></${this.classWrapper.getTagName()}>
 `;
-    return htmlString;
-  }
-
-  private removeOwnTag(innerHTML: string) {
-    if (innerHTML.indexOf(">") > -1) {
-      innerHTML = innerHTML.substr(innerHTML.indexOf(">") + 1, innerHTML.length);
-    }
-    return innerHTML;
+    return htmlString.trim();
   }
 
   public renderPropertyGui(): TemplateResult[] {

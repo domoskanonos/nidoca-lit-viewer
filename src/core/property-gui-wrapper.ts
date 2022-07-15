@@ -23,7 +23,7 @@ export class PropertyGuiWrapper {
     }
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.STRING:
+      case RenderType.String:
         return html`
                     <nidoca-form-text .textType="${NidocaFormTextType.TEXT}"
                                       label="${this.propertyWrapper.propertyName}"
@@ -36,7 +36,7 @@ export class PropertyGuiWrapper {
                                         classGuiWrapper.parent.requestUpdate();
                                       }}"
                     /></nidoca-form-text>`;
-      case RenderType.NUMBER:
+      case RenderType.Number:
         return html` <nidoca-form-text
           label="${this.propertyWrapper.propertyName}"
           .textType="${NidocaFormTextType.NUMBER}"
@@ -46,7 +46,7 @@ export class PropertyGuiWrapper {
             classGuiWrapper.parent.requestUpdate();
           }}"
         ></nidoca-form-text>`;
-      case RenderType.BOOLEAN: {
+      case RenderType.Boolean: {
         return html` <nidoca-form-switch
           label="${this.propertyWrapper.propertyName}"
           type="checkbox"
@@ -57,7 +57,7 @@ export class PropertyGuiWrapper {
           }}"
         ></nidoca-form-switch>`;
       }
-      case RenderType.COMBOBOX: {
+      case RenderType.Class: {
         return html` <nidoca-form-combobox
           label="${this.propertyWrapper.propertyName}"
           .options="${NidocaFormCombobox.enumToOptions(this.propertyWrapper.getType(), false)}"
@@ -76,7 +76,7 @@ export class PropertyGuiWrapper {
         >
         </nidoca-form-combobox>`;
       }
-      case RenderType.ARRAY:
+      case RenderType.Array:
         return html`
           <nidoca-form-combobox
             label="${this.propertyWrapper.propertyName}"
@@ -100,15 +100,13 @@ export class PropertyGuiWrapper {
   }
 
   getAsHtml(classGuiWrapper: WebcomponentGuiWrapper): string {
-    const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
+    const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.BOOLEAN:
-        return `.${this.propertyWrapper.propertyName}="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
-        }"\n`;
-      case RenderType.ARRAY:
+      case RenderType.Boolean:
+        return `${this.propertyWrapper.propertyName}\n`;
+      case RenderType.Array:
         return "";
-      case RenderType.COMBOBOX:
+      case RenderType.Class:
         return `${this.propertyWrapper.propertyName}="${this.propertyWrapper.getEnumKey(
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         )}"\n`;
@@ -120,19 +118,22 @@ export class PropertyGuiWrapper {
   }
 
   getAsLit(classGuiWrapper: WebcomponentGuiWrapper): string {
-    const propertyType: RenderType = this.propertyWrapper.getRenderType();
-    switch (propertyType) {
-      case RenderType.COMBOBOX:
+    const renderType: RenderType = this.propertyWrapper.getRenderType();
+    console.log(this.propertyWrapper.propertyName + renderType);
+    switch (renderType) {
+      case RenderType.Class:
         return `.${
           this.propertyWrapper.propertyName
         }="\${${this.propertyWrapper.getClassName()}.${this.propertyWrapper.getEnumKey(
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         )}}"\n`;
-      case RenderType.STRING:
+      case RenderType.String:
         return `${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
-      case RenderType.ARRAY:
+      case RenderType.Boolean:
+        return `${this.propertyWrapper.propertyName}\n`;
+      case RenderType.Array:
         return `.${this.propertyWrapper.propertyName}="\${[]}"\n`;
       default:
         return `.${this.propertyWrapper.propertyName}="\${}"\n`;
@@ -142,17 +143,17 @@ export class PropertyGuiWrapper {
   getAsAngular(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.COMBOBOX:
+      case RenderType.Class:
         return `[${
           this.propertyWrapper.propertyName
         }]="\${${this.propertyWrapper.getClassName()}.${this.propertyWrapper.getEnumKey(
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         )}}"\n`;
-      case RenderType.STRING:
+      case RenderType.String:
         return `[${this.propertyWrapper.propertyName}]="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
-      case RenderType.ARRAY:
+      case RenderType.Array:
         return `[${this.propertyWrapper.propertyName}]="\${[]}"\n`;
       default:
         return `[${this.propertyWrapper.propertyName}]="\${}"\n`;
@@ -160,12 +161,12 @@ export class PropertyGuiWrapper {
   }
 
   getAsJavascript(classGuiWrapper: WebcomponentGuiWrapper): string {
-    const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
+    const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.COMBOBOX:
-      case RenderType.ARRAY:
+      case RenderType.Class:
+      case RenderType.Array:
         return "";
-      case RenderType.STRING:
+      case RenderType.String:
         return `element.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }";\n`;
@@ -179,10 +180,10 @@ export class PropertyGuiWrapper {
   getAsTypescript(classGuiWrapper: WebcomponentGuiWrapper): string {
     const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
     switch (propertyType) {
-      case RenderType.COMBOBOX:
-      case RenderType.ARRAY:
+      case RenderType.Class:
+      case RenderType.Array:
         return "";
-      case RenderType.STRING:
+      case RenderType.String:
         return `element.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }";\n`;

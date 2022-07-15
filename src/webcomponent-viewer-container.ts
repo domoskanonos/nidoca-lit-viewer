@@ -1,9 +1,8 @@
 import {css, html, LitElement, TemplateResult} from "lit";
-import {property, customElement} from "lit/decorators.js";
+import {customElement, query} from "lit/decorators.js";
 import {NidocaFormCombobox} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-combobox";
 import {FormOutputData} from "@domoskanonos/nidoca-webcomponents/lib/nidoca-form-abstract-input-element";
-
-import {ifDefined} from "lit/directives/if-defined.js";
+import {WebcomponentViewer} from "./webcomponent-viewer";
 
 @customElement("webcomponent-viewer-container")
 export class WebcomponentViewerContainer extends LitElement {
@@ -13,11 +12,12 @@ export class WebcomponentViewerContainer extends LitElement {
     }
   `;
 
-  @property({type: String})
-  elementName: string | undefined;
+  @query("#webcomponentViewer")
+  webcomponentViewer?: WebcomponentViewer;
 
   private componentMap: Map<string, HTMLElement> = new Map<string, HTMLElement>();
 
+  private value: string = "";
   private options: FormOutputData[] = [];
 
   public render(): TemplateResult {
@@ -25,16 +25,21 @@ export class WebcomponentViewerContainer extends LitElement {
       <nidoca-form-combobox
         name="components"
         label="Komponenten"
-        value="${ifDefined(this.elementName)}"
+        value="${this.value}"
         .options="${this.options}"
         @input="${(event: Event) => {
-          this.elementName = (<NidocaFormCombobox>event.target).getOutputData().value;
+          const elementName = (<NidocaFormCombobox>event.target).getOutputData().value;
+          const element = this.componentMap.get(elementName);
+          if (this.webcomponentViewer) {
+            console.log(`change element: ${elementName}`);
+            this.webcomponentViewer.element = element;
+          }
         }}"
       ></nidoca-form-combobox>
 
       <nidoca-hr></nidoca-hr>
 
-      <webcomponent-viewer> ${this.componentMap.get(this.elementName ? this.elementName : "")} </webcomponent-viewer>
+      <webcomponent-viewer id="webcomponentViewer"></webcomponent-viewer>
       <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>
     `;
   }
@@ -46,8 +51,9 @@ export class WebcomponentViewerContainer extends LitElement {
     for (let index = 0; index < elementSize; index++) {
       const element: Element = elements[index];
       if (element instanceof HTMLElement) {
-        if (this.elementName == undefined) {
-          this.elementName = element.tagName;
+        if (this.webcomponentViewer && this.webcomponentViewer.element == undefined) {
+          this.webcomponentViewer.element = element;
+          this.value = element.tagName;
         }
         this.componentMap.set(element.tagName, <HTMLElement>element.cloneNode(true));
       }

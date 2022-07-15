@@ -1,10 +1,10 @@
 export enum RenderType {
-  STRING = "String",
-  NUMBER = "Number",
-  BOOLEAN = "Boolean",
-  COMBOBOX = "Class",
-  ARRAY = "Array",
-  UNDEFINED = "undefined",
+  String = "String",
+  Number = "Number",
+  Boolean = "Boolean",
+  Class = "Class",
+  Array = "Array",
+  undefined = "undefined",
 }
 
 export class PropertyWrapper {
@@ -21,16 +21,12 @@ export class PropertyWrapper {
   }
 
   public getRenderType(): RenderType {
-    if (this.isConverterTypeArray()) {
-      return RenderType.ARRAY;
+    if (this.isConverterTypeArray() || this.isArray()) {
+      return RenderType.Array;
     }
 
-    if (!this.isPrimitive() && !this.isArray()) {
-      return RenderType.COMBOBOX;
-    }
-
-    if (this.isArray()) {
-      return RenderType.UNDEFINED;
+    if (this.getTypeName() == undefined) {
+      return RenderType.String;
     }
 
     const renderType = <RenderType>this.getTypeName();

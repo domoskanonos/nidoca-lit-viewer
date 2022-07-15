@@ -36,92 +36,94 @@ export class WebcomponentViewer extends LitElement {
   }
 
   public render(): TemplateResult {
-    return html` <nidoca-section theme="primary">
-        <div>
-          <nidoca-text-h2 class="paddingTopBottom">Tag</nidoca-text-h2>
-          <nidoca-code
-            >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
-          </nidoca-code>
+    return this.element
+      ? html` <nidoca-section theme="primary">
+            <div>
+              <nidoca-text-h2 class="paddingTopBottom">Tag</nidoca-text-h2>
+              <nidoca-code
+                >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
+              </nidoca-code>
 
-          <div style="padding-top:var(--space-3);">
-            <nidoca-section> ${this.element}</nidoca-section>
-          </div>
-        </div>
+              <div style="padding-top:var(--space-3);">
+                <nidoca-section> ${this.element}</nidoca-section>
+              </div>
+            </div>
 
-        <div style="padding-left:var(--space-3)">
-          ${this.webcomponentGuiWrapper?.hasProperties()
-            ? html`
-                <nidoca-text-h2 class="paddingTopBottom">Attribute</nidoca-text-h2>
-                ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {
-                  return html`${prop.getInputElement(this.webcomponentGuiWrapper)}
-                    <div class="paddingTopBottom"></div>`;
-                })}
-              `
-            : html``}
-          ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
-            ? html` <nidoca-text-h2 class="paddingTopBottom">Slots</nidoca-text-h2>
+            <div style="padding-left:var(--space-3)">
+              ${this.webcomponentGuiWrapper?.hasProperties()
+                ? html`
+                    <nidoca-text-h2 class="paddingTopBottom">Attribute</nidoca-text-h2>
+                    ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {
+                      return html`${prop.getInputElement(this.webcomponentGuiWrapper)}
+                        <div class="paddingTopBottom"></div>`;
+                    })}
+                  `
+                : html``}
+              ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
+                ? html` <nidoca-text-h2 class="paddingTopBottom">Slots</nidoca-text-h2>
 
-                <nidoca-table
-                  theme="surface"
-                  .headers="${["name"]}"
-                  .rows="${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}"
-                >
-                </nidoca-table>`
-            : html``}
-          ${this.customEventNames.length > 0
-            ? html` <nidoca-text-h2 class="paddingTopBottom">Custom Events</nidoca-text-h2>
-                <nidoca-table
-                  class="paddingTopBottom"
-                  .headers="${["name"]}"
-                  .rows="${this.toCustomEventRows(this.customEventNames)}"
-                >
-                </nidoca-table>`
-            : html``}
-        </div>
-      </nidoca-section>
+                    <nidoca-table
+                      theme="surface"
+                      .headers="${["name"]}"
+                      .rows="${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}"
+                    >
+                    </nidoca-table>`
+                : html``}
+              ${this.customEventNames.length > 0
+                ? html` <nidoca-text-h2 class="paddingTopBottom">Custom Events</nidoca-text-h2>
+                    <nidoca-table
+                      class="paddingTopBottom"
+                      .headers="${["name"]}"
+                      .rows="${this.toCustomEventRows(this.customEventNames)}"
+                    >
+                    </nidoca-table>`
+                : html``}
+            </div>
+          </nidoca-section>
 
-      <nidoca-hr></nidoca-hr>
+          <nidoca-hr></nidoca-hr>
 
-      <nidoca-text-h2 class="paddingTopBottom">Quelltext</nidoca-text-h2>
-      <nidoca-tabs tabIndex="0">
-        <nidoca-tab slot="tab">Angular</nidoca-tab>
-        <nidoca-tab slot="tab">Javascript</nidoca-tab>
-        <nidoca-tab slot="tab">Typescript</nidoca-tab>
-        <nidoca-tab slot="tab">Lit</nidoca-tab>
-        <nidoca-tab slot="tab">Html</nidoca-tab>
+          <nidoca-text-h2 class="paddingTopBottom">Quelltext</nidoca-text-h2>
+          <nidoca-tabs tabIndex="0">
+            <nidoca-tab slot="tab">Html</nidoca-tab>
+            <nidoca-tab slot="tab">Javascript</nidoca-tab>
+            <nidoca-tab slot="tab">Typescript</nidoca-tab>
+            <nidoca-tab slot="tab">Lit</nidoca-tab>
+            <nidoca-tab slot="tab">Angular</nidoca-tab>
 
-        <nidoca-tab-content slot="tabContent">
-          <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsAngular()}</nidoca-code>
-        </nidoca-tab-content>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsHtml()}</nidoca-code>
+            </nidoca-tab-content>
 
-        <nidoca-tab-content slot="tabContent">
-          <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsJavascript()} </nidoca-code>
-        </nidoca-tab-content>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsJavascript()} </nidoca-code>
+            </nidoca-tab-content>
 
-        <nidoca-tab-content slot="tabContent">
-          <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getTypescript()}</nidoca-code>
-        </nidoca-tab-content>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getTypescript()}</nidoca-code>
+            </nidoca-tab-content>
 
-        <nidoca-tab-content slot="tabContent">
-          <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsLit()}</nidoca-code>
-        </nidoca-tab-content>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsLit()}</nidoca-code>
+            </nidoca-tab-content>
 
-        <nidoca-tab-content slot="tabContent">
-          <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsHtml()}</nidoca-code>
-        </nidoca-tab-content>
-      </nidoca-tabs>
+            <nidoca-tab-content slot="tabContent">
+              <nidoca-code class="paddingTopBottom">${this.webcomponentGuiWrapper?.getAsAngular()}</nidoca-code>
+            </nidoca-tab-content>
+          </nidoca-tabs>
 
-      <nidoca-hr></nidoca-hr>
+          <nidoca-hr></nidoca-hr>
 
-      <nidoca-text-h2 class="paddingTopBottom">Attribute Übersicht</nidoca-text-h2>
-      <nidoca-table
-        class="paddingTopBottom"
-        theme="surface"
-        .headers="${["name", "type", "converter type", "render type"]}"
-        .rows="${this.toAttributeRows(this.webcomponentGuiWrapper?.getPropertyGuiWrappers())}"
-      >
-      </nidoca-table>
-      <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>`;
+          <nidoca-text-h2 class="paddingTopBottom">Attribute Übersicht</nidoca-text-h2>
+          <nidoca-table
+            class="paddingTopBottom"
+            theme="surface"
+            .headers="${["name", "type", "converter type", "render type"]}"
+            .rows="${this.toAttributeRows(this.webcomponentGuiWrapper?.getPropertyGuiWrappers())}"
+          >
+          </nidoca-table>
+          <slot @slotchange="${(event: Event) => this.slotChanged(event)}"></slot>`
+      : html`Kein Element ausgewählt.`;
   }
 
   slotChanged(event: Event): void {
