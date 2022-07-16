@@ -25,7 +25,7 @@ export class PropertyGuiWrapper {
     switch (propertyType) {
       case RenderType.String:
         return html`
-                    <nidoca-form-text .textType="${NidocaFormTextType.TEXT}"
+                    <nidoca-form-text .textType="${NidocaFormTextType.text}"
                                       label="${this.propertyWrapper.propertyName}"
                                       value="${
                                         classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
@@ -39,7 +39,7 @@ export class PropertyGuiWrapper {
       case RenderType.Number:
         return html` <nidoca-form-text
           label="${this.propertyWrapper.propertyName}"
-          .textType="${NidocaFormTextType.NUMBER}"
+          .textType="${NidocaFormTextType.number}"
           value="${classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]}"
           @input="${(eventArg: any) => {
             classWrapper.instance[this.propertyWrapper.propertyName] = eventArg.target.getOutputData().value;
