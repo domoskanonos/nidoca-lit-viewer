@@ -115,7 +115,6 @@ export class PropertyGuiWrapper {
 
   getAsLit(classGuiWrapper: WebcomponentGuiWrapper): string {
     const renderType: RenderType = this.propertyWrapper.getRenderType();
-    console.log(this.propertyWrapper.propertyName + renderType);
     switch (renderType) {
       case RenderType.Class:
       case RenderType.String:
