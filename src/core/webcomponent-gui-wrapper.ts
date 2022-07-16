@@ -42,7 +42,6 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
     return htmlString.trim();
   }
 
-  //${this.removeOwnTag(this.showcaseElement.innerHTML)}
   public getAsLit(): string {
     const htmlString: string = `
 <${this.classWrapper.getTagName()}

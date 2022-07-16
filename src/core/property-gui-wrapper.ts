@@ -106,10 +106,6 @@ export class PropertyGuiWrapper {
         return `${this.propertyWrapper.propertyName}\n`;
       case RenderType.Array:
         return "";
-      case RenderType.Class:
-        return `${this.propertyWrapper.propertyName}="${this.propertyWrapper.getEnumKey(
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
-        )}"\n`;
       default:
         return `${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
@@ -122,11 +118,6 @@ export class PropertyGuiWrapper {
     console.log(this.propertyWrapper.propertyName + renderType);
     switch (renderType) {
       case RenderType.Class:
-        return `.${
-          this.propertyWrapper.propertyName
-        }="\${${this.propertyWrapper.getClassName()}.${this.propertyWrapper.getEnumKey(
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
-        )}}"\n`;
       case RenderType.String:
         return `${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
@@ -144,11 +135,6 @@ export class PropertyGuiWrapper {
     const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
       case RenderType.Class:
-        return `[${
-          this.propertyWrapper.propertyName
-        }]="\${${this.propertyWrapper.getClassName()}.${this.propertyWrapper.getEnumKey(
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
-        )}}"\n`;
       case RenderType.String:
         return `[${this.propertyWrapper.propertyName}]="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
@@ -178,11 +164,11 @@ export class PropertyGuiWrapper {
   }
 
   getAsTypescript(classGuiWrapper: WebcomponentGuiWrapper): string {
-    const propertyType: RenderType = this.propertyWrapper.getConverterTypeName();
+    const propertyType: RenderType = this.propertyWrapper.getRenderType();
     switch (propertyType) {
-      case RenderType.Class:
       case RenderType.Array:
         return "";
+      case RenderType.Class:
       case RenderType.String:
         return `element.${this.propertyWrapper.propertyName}="${
           classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]

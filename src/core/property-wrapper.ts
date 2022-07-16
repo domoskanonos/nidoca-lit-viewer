@@ -26,7 +26,7 @@ export class PropertyWrapper {
     }
 
     if (this.getTypeName() == undefined) {
-      return RenderType.String;
+      return RenderType.Class;
     }
 
     const renderType = <RenderType>this.getTypeName();
