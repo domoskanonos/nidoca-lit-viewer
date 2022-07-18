@@ -11,7 +11,7 @@
     "@domoskanonos/nidoca-base": "1.0.9"
   },
   "dependencies": {
-    "@domoskanonos/nidoca-webcomponents": "1.0.84"
+    "@domoskanonos/nidoca-webcomponents": "1.0.86"
   },
   "author": "Dominik Bruhn",
   "scripts": {
