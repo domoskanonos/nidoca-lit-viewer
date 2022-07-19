@@ -45,7 +45,7 @@ export class WebcomponentViewer extends LitElement {
               </nidoca-code>
 
               <div style="padding-top:var(--space-3);">
-                <nidoca-section> ${this.element}</nidoca-section>
+                <nidoca-card style="padding:var(--space-4)" theme="primary"> ${this.element}</nidoca-card>
               </div>
             </div>
 
