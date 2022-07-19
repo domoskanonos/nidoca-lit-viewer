@@ -50,6 +50,52 @@
             "name": "*",
             "package": "\"./webcomponent-viewer-container\""
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./nidoca-viewer\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/nidoca-viewer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NidocaViewer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaViewer",
+          "declaration": {
+            "name": "NidocaViewer",
+            "module": "src/nidoca-viewer.ts"
+          }
         }
       ]
     },
@@ -324,6 +370,35 @@
             "name": "*",
             "package": "\"./webcomponent-viewer-container\""
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./nidoca-viewer\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "public/lib/nidoca-viewer.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "NidocaViewer",
+          "default": "class NidocaViewer extends LitElement {\n    render() {\n        return html `<nidoca-container>\n      <nidoca-section>\n        <webcomponent-viewer-container>\n          ${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()} ${NidocaImgRound.example()}\n        </webcomponent-viewer-container>\n      </nidoca-section>\n    </nidoca-container>`;\n    }\n}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NidocaViewer",
+          "declaration": {
+            "name": "NidocaViewer",
+            "module": "public/lib/nidoca-viewer.js"
+          }
         }
       ]
     },
@@ -355,7 +430,7 @@
         {
           "kind": "variable",
           "name": "WebcomponentViewer",
-          "default": "class WebcomponentViewer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.webcomponentGuiWrapper = null;\n        this.customEventNames = [];\n    }\n    updated(_changedProperties) {\n        if (_changedProperties.has(\"element\") && this.element != undefined) {\n            this.element.style.flexBasis = \"auto\";\n            this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(this.element));\n            this.requestUpdate();\n        }\n    }\n    render() {\n        var _a, _b, _c, _d, _e, _f, _g, _h;\n        return this.element\n            ? html ` <nidoca-section theme=\"primary\">\n            <div>\n              <nidoca-text-h2 class=\"paddingTopBottom\">Tag</nidoca-text-h2>\n              <nidoca-code\n                >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : \"\"}\n              </nidoca-code>\n\n              <div style=\"padding-top:var(--space-3);\">\n                <nidoca-section> ${this.element}</nidoca-section>\n              </div>\n            </div>\n\n            <div style=\"padding-left:var(--space-3)\">\n              ${((_a = this.webcomponentGuiWrapper) === null || _a === void 0 ? void 0 : _a.hasProperties())\n                ? html `\n                    <nidoca-text-h2 class=\"paddingTopBottom\">Attribute</nidoca-text-h2>\n                    ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {\n                    return html `${prop.getInputElement(this.webcomponentGuiWrapper)}\n                        <div class=\"paddingTopBottom\"></div>`;\n                })}\n                  `\n                : html ``}\n              ${((_b = this.webcomponentGuiWrapper) === null || _b === void 0 ? void 0 : _b.classWrapper.hasSlots())\n                ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Slots</nidoca-text-h2>\n\n                    <nidoca-table\n                      theme=\"surface\"\n                      .headers=\"${[\"name\"]}\"\n                      .rows=\"${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}\"\n                    >\n                    </nidoca-table>`\n                : html ``}\n              ${this.customEventNames.length > 0\n                ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Custom Events</nidoca-text-h2>\n                    <nidoca-table\n                      class=\"paddingTopBottom\"\n                      .headers=\"${[\"name\"]}\"\n                      .rows=\"${this.toCustomEventRows(this.customEventNames)}\"\n                    >\n                    </nidoca-table>`\n                : html ``}\n            </div>\n          </nidoca-section>\n\n          <nidoca-hr></nidoca-hr>\n\n          <nidoca-text-h2 class=\"paddingTopBottom\">Quelltext</nidoca-text-h2>\n          <nidoca-tabs tabIndex=\"0\">\n            <nidoca-tab slot=\"tab\">Html</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Javascript</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Typescript</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Lit</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Angular</nidoca-tab>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_c = this.webcomponentGuiWrapper) === null || _c === void 0 ? void 0 : _c.getAsHtml()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_d = this.webcomponentGuiWrapper) === null || _d === void 0 ? void 0 : _d.getAsJavascript()} </nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_e = this.webcomponentGuiWrapper) === null || _e === void 0 ? void 0 : _e.getTypescript()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_f = this.webcomponentGuiWrapper) === null || _f === void 0 ? void 0 : _f.getAsLit()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_g = this.webcomponentGuiWrapper) === null || _g === void 0 ? void 0 : _g.getAsAngular()}</nidoca-code>\n            </nidoca-tab-content>\n          </nidoca-tabs>\n\n          <nidoca-hr></nidoca-hr>\n\n          <nidoca-text-h2 class=\"paddingTopBottom\">Attribute Übersicht</nidoca-text-h2>\n          <nidoca-table\n            class=\"paddingTopBottom\"\n            theme=\"surface\"\n            .headers=\"${[\"name\", \"type\", \"converter type\", \"render type\"]}\"\n            .rows=\"${this.toAttributeRows((_h = this.webcomponentGuiWrapper) === null || _h === void 0 ? void 0 : _h.getPropertyGuiWrappers())}\"\n          >\n          </nidoca-table>\n          <slot @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>`\n            : html `Kein Element ausgewählt.`;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        const element = elements[0];\n        if (element instanceof HTMLElement) {\n            this.element = element;\n        }\n    }\n    toAttributeRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((prop) => {\n                const arr = [];\n                arr.push(prop.propertyWrapper.propertyName);\n                arr.push(prop.propertyWrapper.getTypeName());\n                arr.push(prop.propertyWrapper.getConverterTypeName());\n                arr.push(prop.propertyWrapper.getRenderType());\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toSlotRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toCustomEventRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n}"
+          "default": "class WebcomponentViewer extends LitElement {\n    constructor() {\n        super(...arguments);\n        this.webcomponentGuiWrapper = null;\n        this.customEventNames = [];\n    }\n    updated(_changedProperties) {\n        if (_changedProperties.has(\"element\") && this.element != undefined) {\n            this.element.style.flexBasis = \"auto\";\n            this.webcomponentGuiWrapper = new WebcomponentGuiWrapper(this, new WebcomponentWrapper(this.element));\n            this.requestUpdate();\n        }\n    }\n    render() {\n        var _a, _b, _c, _d, _e, _f, _g, _h;\n        return this.element\n            ? html ` <nidoca-section theme=\"primary\">\n            <div>\n              <nidoca-text-h2 class=\"paddingTopBottom\">Tag</nidoca-text-h2>\n              <nidoca-code\n                >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : \"\"}\n              </nidoca-code>\n\n              <div style=\"padding-top:var(--space-3);\">\n                <nidoca-card style=\"padding:var(--space-4)\" theme=\"primary\"> ${this.element}</nidoca-card>\n              </div>\n            </div>\n\n            <div style=\"padding-left:var(--space-3)\">\n              ${((_a = this.webcomponentGuiWrapper) === null || _a === void 0 ? void 0 : _a.hasProperties())\n                ? html `\n                    <nidoca-text-h2 class=\"paddingTopBottom\">Attribute</nidoca-text-h2>\n                    ${this.webcomponentGuiWrapper.getPropertyGuiWrappers().map((prop) => {\n                    return html `${prop.getInputElement(this.webcomponentGuiWrapper)}\n                        <div class=\"paddingTopBottom\"></div>`;\n                })}\n                  `\n                : html ``}\n              ${((_b = this.webcomponentGuiWrapper) === null || _b === void 0 ? void 0 : _b.classWrapper.hasSlots())\n                ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Slots</nidoca-text-h2>\n\n                    <nidoca-table\n                      theme=\"surface\"\n                      .headers=\"${[\"name\"]}\"\n                      .rows=\"${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}\"\n                    >\n                    </nidoca-table>`\n                : html ``}\n              ${this.customEventNames.length > 0\n                ? html ` <nidoca-text-h2 class=\"paddingTopBottom\">Custom Events</nidoca-text-h2>\n                    <nidoca-table\n                      class=\"paddingTopBottom\"\n                      .headers=\"${[\"name\"]}\"\n                      .rows=\"${this.toCustomEventRows(this.customEventNames)}\"\n                    >\n                    </nidoca-table>`\n                : html ``}\n            </div>\n          </nidoca-section>\n\n          <nidoca-hr></nidoca-hr>\n\n          <nidoca-text-h2 class=\"paddingTopBottom\">Quelltext</nidoca-text-h2>\n          <nidoca-tabs tabIndex=\"0\">\n            <nidoca-tab slot=\"tab\">Html</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Javascript</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Typescript</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Lit</nidoca-tab>\n            <nidoca-tab slot=\"tab\">Angular</nidoca-tab>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_c = this.webcomponentGuiWrapper) === null || _c === void 0 ? void 0 : _c.getAsHtml()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_d = this.webcomponentGuiWrapper) === null || _d === void 0 ? void 0 : _d.getAsJavascript()} </nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_e = this.webcomponentGuiWrapper) === null || _e === void 0 ? void 0 : _e.getTypescript()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_f = this.webcomponentGuiWrapper) === null || _f === void 0 ? void 0 : _f.getAsLit()}</nidoca-code>\n            </nidoca-tab-content>\n\n            <nidoca-tab-content slot=\"tabContent\">\n              <nidoca-code class=\"paddingTopBottom\">${(_g = this.webcomponentGuiWrapper) === null || _g === void 0 ? void 0 : _g.getAsAngular()}</nidoca-code>\n            </nidoca-tab-content>\n          </nidoca-tabs>\n\n          <nidoca-hr></nidoca-hr>\n\n          <nidoca-text-h2 class=\"paddingTopBottom\">Attribute Übersicht</nidoca-text-h2>\n          <nidoca-table\n            class=\"paddingTopBottom\"\n            theme=\"surface\"\n            .headers=\"${[\"name\", \"type\", \"converter type\", \"render type\"]}\"\n            .rows=\"${this.toAttributeRows((_h = this.webcomponentGuiWrapper) === null || _h === void 0 ? void 0 : _h.getPropertyGuiWrappers())}\"\n          >\n          </nidoca-table>\n          <slot @slotchange=\"${(event) => this.slotChanged(event)}\"></slot>`\n            : html `Kein Element ausgewählt.`;\n    }\n    slotChanged(event) {\n        const slotElement = event.target;\n        if (slotElement == undefined) {\n            return;\n        }\n        const elements = slotElement.assignedElements();\n        const element = elements[0];\n        if (element instanceof HTMLElement) {\n            this.element = element;\n        }\n    }\n    toAttributeRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((prop) => {\n                const arr = [];\n                arr.push(prop.propertyWrapper.propertyName);\n                arr.push(prop.propertyWrapper.getTypeName());\n                arr.push(prop.propertyWrapper.getConverterTypeName());\n                arr.push(prop.propertyWrapper.getRenderType());\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toSlotRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n    toCustomEventRows(arr) {\n        const retval = [[]];\n        if (arr) {\n            arr.map((name) => {\n                const arr = [];\n                arr.push(name);\n                retval.push(arr);\n                return arr;\n            });\n        }\n        return retval;\n    }\n}"
         }
       ],
       "exports": [
