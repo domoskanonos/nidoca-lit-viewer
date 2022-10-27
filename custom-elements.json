@@ -388,7 +388,7 @@
         {
           "kind": "variable",
           "name": "NidocaViewer",
-          "default": "class NidocaViewer extends LitElement {\n    render() {\n        return html `<nidoca-container>\n      <nidoca-section>\n        <webcomponent-viewer-container>\n          ${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()} ${NidocaImgRound.example()}\n        </webcomponent-viewer-container>\n      </nidoca-section>\n    </nidoca-container>`;\n    }\n}"
+          "default": "class NidocaViewer extends LitElement {\n    render() {\n        return html `<nidoca-container>\n      <nidoca-section>\n        <webcomponent-viewer-container>\n          ${NidocaTabs.example()}${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}\n          ${NidocaImgRound.example()}\n        </webcomponent-viewer-container>\n      </nidoca-section>\n    </nidoca-container>`;\n    }\n}"
         }
       ],
       "exports": [
