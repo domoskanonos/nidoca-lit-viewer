@@ -1,6 +1,12 @@
 import {html, LitElement, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
-import {NidocaImgRound, NidocaList, NidocaListItem, NidocaListSection} from "@domoskanonos/nidoca-webcomponents/lib";
+import {
+  NidocaImgRound,
+  NidocaList,
+  NidocaListItem,
+  NidocaListSection,
+  NidocaTabs,
+} from "@domoskanonos/nidoca-webcomponents/lib";
 
 @customElement("nidoca-viewer")
 export class NidocaViewer extends LitElement {
@@ -8,7 +14,8 @@ export class NidocaViewer extends LitElement {
     return html`<nidoca-container>
       <nidoca-section>
         <webcomponent-viewer-container>
-          ${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()} ${NidocaImgRound.example()}
+          ${NidocaTabs.example()}${NidocaList.example()} ${NidocaListItem.example()} ${NidocaListSection.example()}
+          ${NidocaImgRound.example()}
         </webcomponent-viewer-container>
       </nidoca-section>
     </nidoca-container>`;

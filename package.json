@@ -8,10 +8,10 @@
   "description": "nidoca framework (nidoca-lit-viewer)",
   "type": "module",
   "devDependencies": {
-    "@domoskanonos/nidoca-base": "1.0.9"
+    "@domoskanonos/nidoca-base": "1.1.1"
   },
   "dependencies": {
-    "@domoskanonos/nidoca-webcomponents": "1.0.88"
+    "@domoskanonos/nidoca-webcomponents": "1.0.92"
   },
   "author": "Dominik Bruhn",
   "scripts": {
