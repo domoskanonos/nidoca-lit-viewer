@@ -41,7 +41,7 @@ export class WebcomponentViewer extends LitElement {
             <div>
               <nidoca-text-h2 class="paddingTopBottom">Tag</nidoca-text-h2>
               <nidoca-code
-                >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.classWrapper.getHTMLTag() : ""}
+                >${this.webcomponentGuiWrapper ? this.webcomponentGuiWrapper.webcomponentWrapper.getHTMLTag() : ""}
               </nidoca-code>
 
               <div style="padding-top:var(--space-3);">
@@ -59,13 +59,13 @@ export class WebcomponentViewer extends LitElement {
                     })}
                   `
                 : html``}
-              ${this.webcomponentGuiWrapper?.classWrapper.hasSlots()
+              ${this.webcomponentGuiWrapper?.webcomponentWrapper.hasSlots()
                 ? html` <nidoca-text-h2 class="paddingTopBottom">Slots</nidoca-text-h2>
 
                     <nidoca-table
                       theme="surface"
                       .headers="${["name"]}"
-                      .rows="${this.toSlotRows(this.webcomponentGuiWrapper.classWrapper.getSlotNames())}"
+                      .rows="${this.toSlotRows(this.webcomponentGuiWrapper.webcomponentWrapper.getSlotNames())}"
                     >
                     </nidoca-table>`
                 : html``}

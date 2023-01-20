@@ -4,21 +4,21 @@ import {PropertyGuiWrapper} from "./property-gui-wrapper";
 import {WebcomponentViewer} from "..";
 
 export class WebcomponentGuiWrapper {
-  constructor(public parent: WebcomponentViewer, public classWrapper: WebcomponentWrapper) {}
+  constructor(public parent: WebcomponentViewer, public webcomponentWrapper: WebcomponentWrapper) {}
 
   public getAsHtml(): string {
-    const htmlString: string = `<${this.classWrapper.getTagName()}
+    const htmlString: string = `<${this.webcomponentWrapper.getTagName()}
 ${this.getPropertyGuiWrappers()
   .map((propertyGuiWrapper) => {
     return propertyGuiWrapper.getAsHtml(this);
   })
-  .join("")}></${this.classWrapper.getTagName()}>
+  .join("")}></${this.webcomponentWrapper.getTagName()}>
 `;
     return htmlString.trim();
   }
 
   public getAsJavascript(): string {
-    const htmlString: string = `<${this.classWrapper.getTagName()} id="meinElement"></${this.classWrapper.getTagName()}>
+    const htmlString: string = `<${this.webcomponentWrapper.getTagName()} id="meinElement"></${this.webcomponentWrapper.getTagName()}>
 <script>
   const element = document.getElementById("meinElement");
   ${this.getPropertyGuiWrappers()
@@ -32,7 +32,7 @@ ${this.getPropertyGuiWrappers()
 
   public getTypescript(): string {
     const htmlString: string = `
-const element : ${this.classWrapper.getClassName()} = document.getElementById("meinElement");
+const element : ${this.webcomponentWrapper.getClassName()} = document.getElementById("meinElement");
   ${this.getPropertyGuiWrappers()
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsTypescript(this);
@@ -44,7 +44,7 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
 
   public getAsLit(): string {
     const htmlString: string = `
-<${this.classWrapper.getTagName()}
+<${this.webcomponentWrapper.getTagName()}
   ${this.getPropertyGuiWrappers()
     .map((propertyGuiWrapper) => {
       return propertyGuiWrapper.getAsLit(this);
@@ -55,12 +55,12 @@ const element : ${this.classWrapper.getClassName()} = document.getElementById("m
   }
 
   public getAsAngular(): string {
-    const htmlString: string = `<${this.classWrapper.getTagName()}
+    const htmlString: string = `<${this.webcomponentWrapper.getTagName()}
 ${this.getPropertyGuiWrappers()
   .map((propertyGuiWrapper) => {
     return propertyGuiWrapper.getAsAngular(this);
   })
-  .join("  ")}></${this.classWrapper.getTagName()}>
+  .join("  ")}></${this.webcomponentWrapper.getTagName()}>
 `;
     return htmlString.trim();
   }
@@ -83,7 +83,7 @@ ${this.getPropertyGuiWrappers()
   }
   public getPropertyGuiWrappers(): PropertyGuiWrapper[] {
     const propertyGuiWrappers: PropertyGuiWrapper[] = [];
-    for (const prop of this.classWrapper.getProperties()) {
+    for (const prop of this.webcomponentWrapper.getElementProperties()) {
       propertyGuiWrappers.push(new PropertyGuiWrapper(prop));
     }
     return propertyGuiWrappers;

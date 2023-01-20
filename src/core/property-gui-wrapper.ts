@@ -16,7 +16,7 @@ export class PropertyGuiWrapper {
       return html``;
     }
 
-    const classWrapper: WebcomponentWrapper | null = classGuiWrapper.classWrapper;
+    const classWrapper: WebcomponentWrapper | null = classGuiWrapper.webcomponentWrapper;
 
     if (classWrapper == null) {
       return html``;
@@ -108,7 +108,7 @@ export class PropertyGuiWrapper {
         return "";
       default:
         return `${this.propertyWrapper.propertyName}="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
     }
   }
@@ -119,7 +119,7 @@ export class PropertyGuiWrapper {
       case RenderType.Class:
       case RenderType.String:
         return `${this.propertyWrapper.propertyName}="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
       case RenderType.Boolean:
         return `${this.propertyWrapper.propertyName}\n`;
@@ -136,7 +136,7 @@ export class PropertyGuiWrapper {
       case RenderType.Class:
       case RenderType.String:
         return `[${this.propertyWrapper.propertyName}]="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }"\n`;
       case RenderType.Array:
         return `[${this.propertyWrapper.propertyName}]="\${[]}"\n`;
@@ -153,11 +153,11 @@ export class PropertyGuiWrapper {
         return "";
       case RenderType.String:
         return `element.${this.propertyWrapper.propertyName}="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }";\n`;
       default:
         return `element.${this.propertyWrapper.propertyName}=${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         };\n`;
     }
   }
@@ -170,11 +170,11 @@ export class PropertyGuiWrapper {
       case RenderType.Class:
       case RenderType.String:
         return `element.${this.propertyWrapper.propertyName}="${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         }";\n`;
       default:
         return `element.${this.propertyWrapper.propertyName}=${
-          classGuiWrapper.classWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
+          classGuiWrapper.webcomponentWrapper.instance[this.propertyWrapper.propertyName as keyof LitElement]
         };\n`;
     }
   }

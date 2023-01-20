@@ -1,4 +1,4 @@
-import {PropertyWrapper} from "./property-wrapper";
+import { PropertyWrapper } from "./property-wrapper";
 
 export class WebcomponentWrapper {
   public instance: any;
@@ -54,16 +54,10 @@ export class WebcomponentWrapper {
     return retval;
   }
 
-  public getPropertieNames(): string[] {
-    const obj: any = this.instance.constructor;
-    const propNames: string[] = Object.getOwnPropertyNames(obj);
-    return propNames;
-  }
-
-  public getProperties(): PropertyWrapper[] {
-    const classProperties: Map<string, any> = (<any>this.instance.constructor)["elementProperties"];
+  public getElementProperties(): PropertyWrapper[] {
+    let classProperties: Map<string, any> = (<any>this.instance.constructor)["elementProperties"];
     if (!classProperties) {
-      throw new Error("selected item malformed. no lit element ? wrong lit version ?");
+      classProperties = new Map<string, any>();
     }
     const classPropertyArray: PropertyWrapper[] = [];
     for (const key of Array.from(classProperties.keys())) {
@@ -71,4 +65,11 @@ export class WebcomponentWrapper {
     }
     return classPropertyArray;
   }
+
+  public getOwnPropertieNames(): string[] {
+    const obj: any = this.instance.constructor;
+    const propNames: string[] = Object.getOwnPropertyNames(obj);
+    return propNames;
+  }
+
 }
