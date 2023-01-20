@@ -19,6 +19,7 @@ customElements.define = function () {
     customTags.push({ tag: arguments[0], ctor: arguments[1] })
 
     //original.apply(customElements, arguments);
+    
 }
 
 //setTimeout(() => { console.log(customTags); }, 1000)
