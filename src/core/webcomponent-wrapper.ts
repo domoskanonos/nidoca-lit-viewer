@@ -1,4 +1,4 @@
-import { PropertyWrapper } from "./property-wrapper";
+import {PropertyWrapper} from "./property-wrapper";
 
 export class WebcomponentWrapper {
   public instance: any;
@@ -71,5 +71,4 @@ export class WebcomponentWrapper {
     const propNames: string[] = Object.getOwnPropertyNames(obj);
     return propNames;
   }
-
 }
