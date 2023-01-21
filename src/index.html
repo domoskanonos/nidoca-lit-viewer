@@ -15,7 +15,19 @@
       @import url("main.css");
       @import url("https://domoskanonos.github.io/nidoca-webcomponents/nidoca.css");
     </style>
+    <script>
+      let _CUSTOM_ELEMENTS = [];
+      const define = window.customElements.define.bind(window.customElements);
+      window.customElements.define = (name, clazz) => {
+        console.log("register custom element: " + name);
+        _CUSTOM_ELEMENTS.push(clazz);
+        if (!customElements.get(name)) {
+          define(name, clazz);
+        }
+      };
+    </script>
   </head>
+
   <body>
     <nidoca-viewer></nidoca-viewer>
   </body>
