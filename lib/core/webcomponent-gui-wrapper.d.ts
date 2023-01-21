@@ -4,8 +4,8 @@ import { PropertyGuiWrapper } from "./property-gui-wrapper";
 import { WebcomponentViewer } from "..";
 export declare class WebcomponentGuiWrapper {
     parent: WebcomponentViewer;
-    classWrapper: WebcomponentWrapper;
-    constructor(parent: WebcomponentViewer, classWrapper: WebcomponentWrapper);
+    webcomponentWrapper: WebcomponentWrapper;
+    constructor(parent: WebcomponentViewer, webcomponentWrapper: WebcomponentWrapper);
     getAsHtml(): string;
     getAsJavascript(): string;
     getTypescript(): string;

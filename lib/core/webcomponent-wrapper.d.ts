@@ -10,6 +10,6 @@ export declare class WebcomponentWrapper {
     getSlots(): HTMLSlotElement[];
     hasSlots(): boolean;
     private getElementsByTagName;
-    getPropertieNames(): string[];
-    getProperties(): PropertyWrapper[];
+    getElementProperties(): PropertyWrapper[];
+    getOwnPropertieNames(): string[];
 }
